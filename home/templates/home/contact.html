@@ -1,0 +1,100 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock %}
+{% block activeContactNav %}active{% endblock %}
+{% block content %}
+
+    <!--================ Start Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Contact Me</h2>
+                    <div class="page_link">
+                        <a href="{% url 'shadownetz:index' %}">Home</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Banner Area =================-->
+
+    <!--================Contact Area =================-->
+    <section class="contact_area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="contact_info">
+                        <div class="info_item">
+                            <i class="lnr lnr-home"></i>
+                            <h6>Lagos, Nigeria</h6>
+                            <p>Satellite Town</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="lnr lnr-phone-handset"></i>
+                            <h6><a href="tel:+2349068810277">(+234) 90 688 102 77</a></h6>
+                            <p>Mon to Sat 10am to 6pm</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="lnr lnr-envelope"></i>
+                            <h6><a href="mailto:shadownetzhack@gmail.com">shadownetzhack@gmail.com</a></h6>
+                            <p>Send me your query anytime!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <form class="row contact_form" action="" method="post" id="contactForm" novalidate="novalidate">
+                        {% csrf_token %}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ contactForm.name }}
+                            </div>
+                            <div class="form-group">
+                                {{ contactForm.email }}
+                            </div>
+                            <div class="form-group">
+                                {{ contactForm.subject }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ contactForm.message }}
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-right">
+                            <button type="button" value="submit" class="primary_btn" id="js-contact-btn">
+                                <span>Send Message</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="mapBox" class="mapBox"
+                 data-lat="40.701083"
+                 data-lon="-74.1522848"
+                 data-zoom="13"
+                 data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
+                 data-mlat="40.701083"
+                 data-mlon="-74.1522848">
+            </div>
+        </div>
+    </section>
+    <!--================Contact Area =================-->
+
+{% endblock %}
+{% block script %}
+{#    FIXME: check why the if statement is not working #}
+    {% if contact_submitted %}
+        <script>
+            Swal.fire({
+                position: 'center',
+                type: 'success',
+                title: 'Success',
+                text: 'Request Submitted',
+                showConfirmButton: true,
+                timer: 2000
+            })
+        </script>
+    {% endif %}
+{% endblock %}
