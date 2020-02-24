@@ -138,7 +138,7 @@ AUTH_USER_MODEL = 'home.User'
 LOGIN_URL = '/moderator/auth'
 
 
-PREPEND_WWW = True
+# PREPEND_WWW = True
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 SECURE_REFERRER_POLICY = 'same-origin'
