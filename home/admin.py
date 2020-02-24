@@ -6,20 +6,20 @@ from .models import User, NewsLetterSubscription, Contact
 class CustomUserAdmin(UserAdmin):
     model = User
     list_display = (
-        'id', 'first_name', 'last_name', 'email', 'password', 'is_superuser',
+        'id', 'first_name', 'last_name', 'email', 'password', 'is_superuser', 'is_staff',
         'is_active', 'avatar', 'date_created', 'last_login'
     )
-    list_filter = ('email', 'is_active', 'date_created', 'last_login')
+    list_filter = ('email', 'is_active', 'is_staff', 'date_created', 'last_login')
     fieldsets = (
         (None, {'fields': ('first_name', 'last_name', 'password', 'email')}),
         ('Avatar', {'fields': ('avatar',)}),
-        ('Permissions', {'fields': ('is_active', 'is_superuser')}),
+        ('Permissions', {'fields': ('is_active', 'is_superuser', 'is_staff',)}),
     )
     add_fieldsets = (
         (None, {'classes': ('wide',),
                 'fields': ('avatar', 'first_name', 'last_name', 'password', 'email',)
                 }),
-        ('Permissions', {'fields': ('is_active',)})
+        ('Permissions', {'fields': ('is_active', 'is_staff',)})
     )
     search_fields = ('email',)
     ordering = ('date_created',)

@@ -84,8 +84,7 @@
 
 {% endblock %}
 {% block script %}
-{#    FIXME: check why the if statement is not working #}
-    {% if contact_submitted %}
+    {% if contact_is_submitted %}
         <script>
             Swal.fire({
                 position: 'center',

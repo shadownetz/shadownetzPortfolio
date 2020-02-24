@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from .models import (User, NewsLetterSubscription)
 from .forms import NewsletterForm, ContactForm
 from django.http import JsonResponse
+from django.views import View
+from django.http import JsonResponse
 
 
 def index(request):
@@ -13,26 +15,29 @@ def index(request):
     return render(request, 'home/index.html', context)
 
 
-def contact(request):
+class ContactView(View):
     contact_form = ContactForm()
-    context = {
-        'contactForm': contact_form,
-        'contact_submitted': False
-    }
-    try:
-        request.session.get('contact_saved')
-        context['contact_submitted'] = True
-        del request.session['contact_saved']
-    except KeyError:
-        pass
 
-    if request.method == 'POST':
+    def get(self, request):
+        context = {
+            'contactForm': self.contact_form
+        }
+        try:
+            tmp = request.session.get('contact_saved')
+            if tmp:
+                context['contact_is_submitted'] = True
+                del request.session['contact_saved']
+        except KeyError:
+            pass
+        return render(request, 'home/contact.html', context)
+
+    def post(self, request):
         new_contact = ContactForm(request.POST)
         if new_contact.is_valid():
             new_contact.save()
             request.session['contact_saved'] = True
             return redirect(reverse('shadownetz:contact'))
-    return render(request, 'home/contact.html', context)
+        self.context['contactForm'] = ContactForm()
 
 
 def newsletter(request):
@@ -50,3 +55,9 @@ def newsletter(request):
         'is_saved': save_status,
         'email_exists': email_exist_status
     })
+
+
+def does_email_exist(request):
+    email = request.GET.get('email')
+    return_data = {'exist': User.objects.filter(email=email).exists()}
+    return JsonResponse(data=return_data)
