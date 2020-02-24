@@ -27,7 +27,7 @@ SECRET_KEY = '-rbo_0zsc+b$ah%_%del814!a)qyag47dm!8^h3ye%@b*lzmy('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shadownetz.herokuapp.com']
 
 
 # Application definition
@@ -136,5 +136,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 AUTH_USER_MODEL = 'home.User'
 
 LOGIN_URL = '/moderator/auth'
+
+
+PREPEND_WWW = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+SECURE_REFERRER_POLICY = 'same-origin'
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 django_heroku.settings(locals())
