@@ -32,7 +32,7 @@
 <body>
 
 <!--================ Start Header Area =================-->
-<header class="header_area">
+<header class="header_area" style="z-index: 999">
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
@@ -133,6 +133,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="{% static 'home/js/gmaps.min.js' %}"></script>
 <script src="{% static 'home/js/theme.js' %}"></script>
+<script src="{% static 'home/js/smoothScrolling.js'%}"></script>
 <script src="{% static 'home/js/custom.js'%}"></script>
 {% block script %}{% endblock %}
 </body>

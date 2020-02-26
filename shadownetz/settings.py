@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'home',
     'blog',
     'moderator',
+    'developershub',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,19 +80,19 @@ WSGI_APPLICATION = 'shadownetz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'shadownetzdb',
-#         'USER': 'shadownetz',
-#         'PASSWORD': 'judoski911',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'shadownetzdb',
+        'USER': 'shadownetz',
+        'PASSWORD': 'judoski911',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
 
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -139,12 +140,13 @@ LOGIN_URL = '/moderator/auth'
 
 
 # PREPEND_WWW = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-SECURE_REFERRER_POLICY = 'same-origin'
-CSRF_COOKIE_SECURE = True
-SECURE_HSTS_SECONDS = 60
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# SECURE_REFERRER_POLICY = 'same-origin'
+# CSRF_COOKIE_SECURE = True
+# SECURE_HSTS_SECONDS = 60
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
 django_heroku.settings(locals())

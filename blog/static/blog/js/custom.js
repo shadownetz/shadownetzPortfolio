@@ -46,6 +46,11 @@ $(function(){
         }else{
             $('#contactForm').submit()
         }
+    });
+    // goto link when clicked for div
+    $('.js-blog-category').click(function (event){
+        event.preventDefault();
+        document.location = $(this).attr("link");
     })
 });
 

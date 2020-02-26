@@ -10,7 +10,7 @@
     <meta name="description" content="You are welcome to shadownetZ online profile. Feel free to contact me for any web services you might need.">
 
     <link rel="icon" href="{% static 'blog/img/favicon.png' %}" type="image/png">
-    <title>shadownetZ | Blog {% block title %}{% endblock %}</title>
+    <title>shadownetZ | Developers HUB {% block title %}{% endblock %}</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'blog/vendors/linericon/style.css' %}">
@@ -23,6 +23,9 @@
 
     <!-- main css -->
     <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+
+    <!--Custom CSS-->
+    {% block style %}{% endblock %}
 
     <!--Google Adsense-->
     <script data-ad-client="ca-pub-5039973038158909" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -46,24 +49,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav justify-content-end">
-                        <li class="nav-item {% block activeHomeNav%}{% endblock %}"><a class="nav-link" href="{% url 'shadownetz_blog:index' %}">Home</a></li>
-                        {#                        <li class="nav-item submenu dropdown">#}
-                        {#                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"#}
-                        {#                               aria-expanded="false">Pages</a>#}
-                        {#                            <ul class="dropdown-menu">#}
-                        {#                                <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>#}
-                        {#                                <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Portfolio Details</a></li>#}
-                        {#                            </ul>#}
-                        {#                        </li>#}
-                        {#                        <li class="nav-item submenu dropdown">#}
-                        {#                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"#}
-                        {#                               aria-expanded="false">Blog</a>#}
-                        {#                            <ul class="dropdown-menu">#}
-                        {#                                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>#}
-                        {#                                <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>#}
-                        {#                            </ul>#}
-                        {#                        </li>#}
-                        <li class="nav-item {% block activeContactNav%}{% endblock %}"><a class="nav-link" href="{% url 'shadownetz:contact' %}">Contact</a></li>
+                        <li class="nav-item {% block activeHomeNav%}{% endblock %}"><a class="nav-link" href="{% url 'shadownetz_blog:index' %}">Blog</a></li>
+                        <li class="nav-item {% block activeDevNav%}{% endblock %}"><a class="nav-link" href="{% url 'shadownetz_blog:shadownetz_developershub:index' %}">Developers HUB</a></li>
+
                     </ul>
                 </div>
             </div>

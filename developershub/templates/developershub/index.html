@@ -1,19 +1,31 @@
-{% extends 'blog/base.html' %}
+{% extends 'developershub/base.html' %}
 {% load static %}
 {% block title %} {% endblock %}
-{% block activeHomeNav %}active{% endblock %}
-
+{% block activeDevNav %}active{% endblock %}
+{% block style %}
+    <style>
+        .banner_overlay{
+            position: absolute;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+            background-color: rgba(0,0,0,.5);
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
     <!--================ Start Banner Area =================-->
-    <section class="banner_area">
-        <div class="banner_inner d-flex align-items-center">
+    <section class="banner_area" style="background: url('{% static 'developershub/img/backgrounds/developershub_bg.jpg'%}') fixed center no-repeat;background-size: cover">
+        <div class="banner_overlay"></div>
+        <div class="banner_inner d-flex align-items-center" style="background-image: none">
             <div class="container">
                 <div class="banner_content text-center">
-                    <h2>Blog</h2>
+                    <h2>Developers HUB</h2>
                     <div class="page_link">
-                        <a href="{% url 'shadownetz:index' %}">Home</a>
-                        <a href="{% url 'shadownetz_blog:index' %}">Our Blog</a>
+                        <a href="{% url 'shadownetz_blog:index' %}">Blog</a>
+                        <a href="{% url 'shadownetz_blog:shadownetz_developershub:index' %}">Developers HUB</a>
                     </div>
                 </div>
             </div>
@@ -33,91 +45,9 @@
             </div>
         </section>
     {% else %}
-        <!--================Blog Categorie Area =================-->
-        <section class="blog_categorie_area section_gap_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="categories_post">
-                            <img src="{% static 'blog/img/blog/cat-post/programming.jpg' %}" alt="post">
-                            <div class="categories_details js-blog-category" link="{% url 'shadownetz_blog:shadownetz_developershub:index' %}">
-                                <div class="categories_text">
-                                    <a href="{% url 'shadownetz_blog:shadownetz_developershub:index' %}"><h5>Developers Hub</h5></a>
-                                    <div class="border_line"></div>
-                                    <p>Coding has never been fun</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="categories_post">
-                            <img src="{% static 'blog/img/blog/cat-post/cat-post-3.jpg' %}" alt="post">
-                            <div class="categories_details">
-                                <div class="categories_text">
-                                    <a href="#"><h5>Social Life</h5></a>
-                                    <div class="border_line"></div>
-                                    <p>Enjoy your social life together</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="categories_post">
-                            <img src="{% static 'blog/img/blog/cat-post/cat-post-1.jpg' %}" alt="post">
-                            <div class="categories_details">
-                                <div class="categories_text">
-                                    <a href="#"><h5>Food</h5></a>
-                                    <div class="border_line"></div>
-                                    <p>Let the food be finished</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <div class="row" style="margin-top:20px">
-                    <div class="col-lg-4">
-                        <div class="categories_post">
-                            <img src="{% static 'blog/img/blog/cat-post/sport.jpg' %}" alt="post">
-                            <div class="categories_details">
-                                <div class="categories_text">
-                                    <a href="#"><h5>Sports</h5></a>
-                                    <div class="border_line"></div>
-                                    <p>Engage yourself nevertheless</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="categories_post">
-                            <img src="{% static 'blog/img/blog/cat-post/movies.jpg' %}" alt="post">
-                            <div class="categories_details">
-                                <div class="categories_text">
-                                    <a href="#"><h5>Movies</h5></a>
-                                    <div class="border_line"></div>
-                                    <p>Enjoy your leisure hours</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="categories_post">
-                            <img src="{% static 'blog/img/blog/cat-post/trending.jpg' %}" alt="post">
-                            <div class="categories_details">
-                                <div class="categories_text">
-                                    <a href="#"><h5>Trending</h5></a>
-                                    <div class="border_line"></div>
-                                    <p>Lets discover something new together</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--================Blog Categorie Area =================-->
 
         <!--================Blog Area =================-->
-        <section class="blog_area">
+        <section class="blog_area section_gap_top">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
@@ -315,82 +245,8 @@
                                 </p>
                                 <div class="br"></div>
                             </aside>
-                            <aside class="single_sidebar_widget popular_post_widget">
-                                <h3 class="widget_title">Popular Posts</h3>
-                                <div class="media post_item">
-                                    <img src="{% static 'blog/img/blog/popular-post/post1.jpg' %}" alt="post">
-                                    <div class="media-body">
-                                        <a href="#"><h3>Space The Final Frontier</h3></a>
-                                        <p>02 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="{% static 'blog/img/blog/popular-post/post2.jpg' %}" alt="post">
-                                    <div class="media-body">
-                                        <a href="#"><h3>The Amazing Hubble</h3></a>
-                                        <p>02 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="{% static 'blog/img/blog/popular-post/post3.jpg' %}" alt="post">
-                                    <div class="media-body">
-                                        <a href="#"><h3>Astronomy Or Astrology</h3></a>
-                                        <p>03 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="{% static 'blog/img/blog/popular-post/post4.jpg' %}" alt="post">
-                                    <div class="media-body">
-                                        <a href="#"><h3>Asteroids telescope</h3></a>
-                                        <p>01 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="br"></div>
-                            </aside>
                             <aside class="single_sidebar_widget ads_widget">
                                 <a href="#"><img class="img-fluid" src="{% static 'blog/img/blog/add.jpg' %}" alt=""></a>
-                                <div class="br"></div>
-                            </aside>
-                            <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title">Post Catgories</h4>
-                                <ul class="list cat-list">
-                                    <li>
-                                        <a href="{% url 'shadownetz_blog:shadownetz_developershub:index' %}" class="d-flex justify-content-between">
-                                            <p>Developers Hub</p>
-                                            <p>37</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Social Life</p>
-                                            <p>24</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Food</p>
-                                            <p>59</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Sports</p>
-                                            <p>29</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Movies</p>
-                                            <p>15</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Trending</p>
-                                            <p>09</p>
-                                        </a>
-                                    </li>
-                                </ul>
                                 <div class="br"></div>
                             </aside>
                             <aside class="single-sidebar-widget newsletter_widget">
@@ -410,23 +266,6 @@
                                 </div>
                                 <p class="text-bottom">You can unsubscribe at any time</p>
                                 <div class="br"></div>
-                            </aside>
-                            <aside class="single-sidebar-widget tag_cloud_widget">
-                                <h4 class="widget_title">Tag Clouds</h4>
-                                <ul class="list">
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Art</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                </ul>
                             </aside>
                         </div>
                     </div>

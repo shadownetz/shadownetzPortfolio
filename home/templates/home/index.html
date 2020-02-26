@@ -20,7 +20,7 @@
                             <h5 class="text-uppercase">full stack web developer</h5>
                             <div class="d-flex align-items-center">
                                 <a class="primary_btn" href="{% url 'shadownetz:contact' %}"><span>Hire Me</span></a>
-                                <a class="primary_btn tr-bg" href="#"><span>Get CV</span></a>
+                                <a class="primary_btn tr-bg" href="#" type="button" data-toggle="modal" data-target="#resumeModal"><span>Get CV</span></a>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         <blockquote cite="https://www.thecoderpedia.com/blog/programming-quotes/">
                             Most good programmers do programming not because they expect to get paid or get adulation by the public, but it is fun to program.
                         </blockquote>
-                        <a class="primary_btn" href="#"><span>Download CV</span></a>
+                        <a class="primary_btn" href="{% static 'home/img/MyResume.png' %}" download="shadownetZ_Resume.png"><span>Download CV</span></a>
                     </div>
                 </div>
             </div>
@@ -526,5 +526,26 @@
         </div>
     </section>
     <!--================ End Newsletter Area =================-->
+
+    <!-- Resume Modal -->
+    <div class="modal fade" id="resumeModal" tabindex="-1" role="dialog" aria-labelledby="ResumeModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+{#                    <h5 class="modal-title" id="ResumeModalLongTitle">Modal title</h5>#}
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <img class="img-fluid" src="{% static 'home/img/MyResume.png' %}" alt="shadownetzResume">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
