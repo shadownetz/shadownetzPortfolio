@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.admin.views.decorators import user_passes_test
 from django.conf import settings
 from .forms import *
+from .scripts.forms.categories.developershub import forms as developershubforms
 
 
 @user_passes_test(lambda x: True if x.is_staff and x.is_superuser else False,

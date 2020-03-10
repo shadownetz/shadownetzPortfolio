@@ -15,9 +15,14 @@
     <link rel="stylesheet" href="{% static 'moderator/resources/vendors/overlay-scrollbars/OverlayScrollbars.min.css' %}">
     <link rel="stylesheet" href="{% static 'moderator/resources/vendors/fullcalendar/core/main.min.css' %}">
     <link rel="stylesheet" href="{% static 'moderator/resources/vendors/fullcalendar/daygrid/main.min.css' %}">
-
+    {% block link %}{% endblock %}
     <!-- App styles -->
     <link rel="stylesheet" href="{% static 'moderator/resources/css/app.min.css' %}">
+    <style>
+        .swal2-modal .swal2-content{
+            color: #0b0b0b;
+        }
+    </style>
 </head>
 
 <body data-sa-theme="3">
@@ -360,242 +365,29 @@
                 <li class="#"><a href="#"> <i class="zwicon-home"></i> Home</a></li>
 
                 <li class="navigation__sub">
-                    <a href="#"><i class="zwicon-three-h"></i> Variants</a>
+                    <a href="#"><i class="zwicon-three-h"></i> Blog Categories</a>
 
                     <ul>
-                        <li><a href="#">Hidden Sidebar</a></li>
-                        <li><a href="#">Boxed Layout</a></li>
-                        <li><a href="#">Boxed Layout with Hidden Sidebar</a></li>
+                        <li><a href="{% url 'shadownetz_moderator:category_developershub' %}">Developers Hub</a></li>
+                        <li><a href="#">Social Life</a></li>
+                        <li><a href="#">Food</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">Trending</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="#"><i class="zwicon-edit-square-feather"></i> Typography</a>
-                </li>
-
-                <li>
-                    <a href="#"><i class="zwicon-layout-4"></i> Widgets</a>
-                </li>
-
-                <li class="navigation__sub">
-                    <a href="#"><i class="zwicon-layout-2"></i> Tables</a>
-
-                    <ul>
-                        <li>
-                            <a href="#">HTML Table</a>
-                        </li>
-                        <li>
-                            <a href="#">Data Table</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="navigation__sub">
-                    <a href="#"><i class="zwicon-note"></i> Forms</a>
-
-                    <ul>
-                        <li>
-                            <a href="#">Basic Form Elements</a>
-                        </li>
-                        <li>
-                            <a href="#">Form Components</a>
-                        </li>
-                        <li>
-                            <a href="#">Form Layouts</a>
-                        </li>
-                        <li>
-                            <a href="#">Form Validation</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="navigation__sub">
-                    <a href="#"><i class="zwicon-cursor-square"></i> User Interface</a>
-
-                    <ul>
-                        <li>
-                            <a href="#">Colors</a>
-                        </li>
-                        <li>
-                            <a href="#">CSS Animations</a>
-                        </li>
-                        <li>
-                            <a href="#">Buttons</a>
-                        </li>
-                        <li>
-                            <a href="#">Icons</a>
-                        </li>
-                        <li>
-                            <a href="#">Listview</a>
-                        </li>
-                        <li>
-                            <a href="#">Toolbars</a>
-                        </li>
-                        <li>
-                            <a href="#">Cards</a>
-                        </li>
-                        <li>
-                            <a href="#">Alerts</a>
-                        </li>
-                        <li>
-                            <a href="#">Badges</a>
-                        </li>
-                        <li>
-                            <a href="#">Bredcrumbs</a>
-                        </li>
-                        <li>
-                            <a href="#">Jumbotron</a>
-                        </li>
-                        <li>
-                            <a href="#">Navs</a>
-                        </li>
-                        <li>
-                            <a href="#">Pagination</a>
-                        </li>
-                        <li>
-                            <a href="#">Progress</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="navigation__sub">
-                    <a href="#"><i class="zwicon-tray-stack"></i> Javascript Components</a>
-
-                    <ul class="navigation__sub">
-                        <li>
-                            <a href="#">Carousel</a>
-                        </li>
-                        <li>
-                            <a href="#">Collapse</a>
-                        </li>
-                        <li>
-                            <a href="#">Dropdowns</a>
-                        </li>
-                        <li>
-                            <a href="#">Modals</a>
-                        </li>
-                        <li>
-                            <a href="#">Popover</a>
-                        </li>
-                        <li>
-                            <a href="#">Tabs</a>
-                        </li>
-                        <li>
-                            <a href="#">Tooltips</a>
-                        </li>
-                        <li>
-                            <a href="#">Toasts</a>
-                        </li>
-                        <li>
-                            <a href="#">Tree View</a>
-                        </li>
-                        <li>
-                            <a href="#">Custom Alerts</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="navigation__sub">
-                    <a href="#"><i class="zwicon-line-chart"></i> Charts</a>
-
-                    <ul>
-                        <li>
-                            <a href="#">Flot</a>
-                        </li>
-                        <li>
-                            <a href="#">Other Charts</a>
-                        </li>
-                        <li>
-                            <a href="#">Maps</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#"><i class="zwicon-calendar-never"></i> Calendar</a>
-                </li>
-
-                <li>
-                    <a href="#"><i class="zwicon-image"></i> Photo Gallery</a>
-                </li>
-
-                <li class="navigation__sub">
-                    <a href="#"><i class="zwicon-repository"></i> Sample Pages</a>
-
-                    <ul>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
-                        <li>
-                            <a href="#">Messages</a>
-                        </li>
-                        <li>
-                            <a href="#">Contacts</a>
-                        </li>
-                        <li>
-                            <a href="#">New Contact</a>
-                        </li>
-                        <li>
-                            <a href="#">Groups</a>
-                        </li>
-                        <li>
-                            <a href="#">Pricing Tables</a>
-                        </li>
-                        <li>
-                            <a href="#">Invoice</a>
-                        </li>
-                        <li>
-                            <a href="#">Todo Lists</a>
-                        </li>
-                        <li>
-                            <a href="#">Notes</a>
-                        </li>
-                        <li>
-                            <a href="#">Search Results</a>
-                        </li>
-                        <li>
-                            <a href="#">Issue Tracker</a>
-                        </li>
-                        <li>
-                            <a href="#">FAQ</a>
-                        </li>
-                        <li>
-                            <a href="#">Team</a>
-                        </li>
-                        <li>
-                            <a href="#">Blog</a>
-                        </li>
-                        <li>
-                            <a href="#">Blog Detail</a>
-                        </li>
-                        <li>
-                            <a href="#">Questions & Answers</a>
-                        </li>
-                        <li>
-                            <a href="#">Questions & Answers Details</a>
-                        </li>
-                        <li>
-                            <a href="#">Login & SignUp</a>
-                        </li>
-                        <li>
-                            <a href="#">Lockscreen</a>
-                        </li>
-                        <li>
-                            <a href="#">404</a>
-                        </li>
-                        <li>
-                            <a href="#">Empty Page</a>
-                        </li>
-                    </ul>
+                    <a href="#"><i class="zwicon-edit-square-feather"></i> ######</a>
                 </li>
             </ul>
         </div>
     </aside>
     <div class="themes">
         <div class="scrollbar">
-            <a href="#" class="themes__item active" data-sa-value="1"><img src="{% static 'moderator/resources/img/bg/1.jpg' %}" alt=""></a>
+            <a href="#" class="themes__item" data-sa-value="1"><img src="{% static 'moderator/resources/img/bg/1.jpg' %}" alt=""></a>
             <a href="#" class="themes__item" data-sa-value="2"><img src="{% static 'moderator/resources/img/bg/2.jpg' %}" alt=""></a>
-            <a href="#" class="themes__item" data-sa-value="3"><img src="{% static 'moderator/resources/img/bg/3.jpg' %}" alt=""></a>
+            <a href="#" class="themes__item active" data-sa-value="3"><img src="{% static 'moderator/resources/img/bg/3.jpg' %}" alt=""></a>
             <a href="#" class="themes__item" data-sa-value="4"><img src="{% static 'moderator/resources/img/bg/4.jpg' %}" alt=""></a>
             <a href="#" class="themes__item" data-sa-value="5"><img src="{% static 'moderator/resources/img/bg/5.jpg' %}" alt=""></a>
             <a href="#" class="themes__item" data-sa-value="6"><img src="{% static 'moderator/resources/img/bg/6.jpg' %}" alt=""></a>
@@ -607,6 +399,38 @@
     </div>
 
     {% block content %}{% endblock %}
+
+    <!-- Stock Images Modal -->
+    <div class="modal fade" id="stockImageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Stock Images Templates</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="card-demo">
+                        <div class="card">
+                            <div class="row">
+                                {% if custom_images %}
+                                    {% for images in custom_images %}
+                                        <div class="col-md-3">
+                                            <div>
+                                                <a href="#" class="js-select-stock-image">
+                                                    <img class="card-img" src="{{ images }}" alt="previewImages" style="width:200px;height: 200px">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p><i>Select a photo to upload</i></p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </main>
@@ -662,8 +486,10 @@
 <script src="{% static 'moderator/resources/vendors/jquery.easy-pie-chart/jquery.easypiechart.min.js' %}"></script>
 <script src="{% static 'moderator/resources/vendors/fullcalendar/core/main.min.js' %}"></script>
 <script src="{% static 'moderator/resources/vendors/fullcalendar/daygrid/main.min.js' %}"></script>
+{% block script %}{% endblock %}
 
 <!-- App functions and actions -->
+<script src="{% static 'moderator/custom/js/newcontent.js' %}"></script>
 <script src="{% static 'moderator/resources/js/app.min.js' %}"></script>
 </body>
 
