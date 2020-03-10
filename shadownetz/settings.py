@@ -134,7 +134,12 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Custom images for blog content stored
+CUSTOM_IMAGES = os.path.join(BASE_DIR, 'moderator/static/moderator/custom/images/custom_images/')
+CUSTOM_IMAGES_DEVELOPERS_HUB = os.path.join(BASE_DIR, 'moderator/static/moderator/custom/images/custom_images/blog_content/developers_hub')
+
 AUTH_USER_MODEL = 'home.User'
+DEVELOPERS_HUB_MODEL = 'developershub.DevelopersHubBlog'
 
 LOGIN_URL = '/moderator/auth'
 
