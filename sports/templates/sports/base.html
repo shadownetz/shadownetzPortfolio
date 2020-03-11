@@ -1,0 +1,126 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="You are welcome to shadownetZ online blog. Feel free to contact me for any web services you might need.">
+
+    <link rel="icon" href="{% static 'blog/img/favicon.png' %}" type="image/png">
+    <title>shadownetZ | Sports {% block title %}{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/vendors/linericon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/vendors/owl-carousel/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/vendors/nice-select/css/nice-select.css' %}">
+    <!-- SweetAlert css-->
+    <link rel="stylesheet" href="{% static 'blog/vendors/sweetalert2/sweetalert2.min.css' %}">
+
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
+    {% block link %}{% endblock %}
+
+    <!--Custom CSS-->
+    {% block style %}{% endblock %}
+
+    <!--Google Adsense-->
+    <script data-ad-client="ca-pub-5039973038158909" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body>
+
+<!--================ Start Header Area =================-->
+<header class="header_area">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="{% url 'shadownetz:index' %}"><img src="{% static 'blog/img/logo1.png' %}" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav justify-content-end">
+                        <li class="nav-item {% block activeHomeNav%}{% endblock %}"><a class="nav-link" href="{% url 'shadownetz_blog:index' %}">Blog</a></li>
+                        <li class="nav-item {% block activeDevNav%}{% endblock %}"><a class="nav-link" href="{% url 'shadownetz_blog:shadownetz_sports:index' %}">Sports</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!--================ End Header Area =================-->
+
+
+{% block content %}{% endblock %}
+
+
+
+
+
+<!--================Footer Area =================-->
+<footer class="footer_area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="footer_top flex-column">
+                    <div class="footer_logo">
+                        <a href="#">
+                            <img src="{% static 'blog/img/logo1.png' %}" alt="">
+                        </a>
+                        <h4>Follow Me</h4>
+                    </div>
+                    <div class="footer_social">
+                        <a href="https://web.facebook.com/shadownetz" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/okwuzuchiagozie" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/shadownetz/" target="_blank"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row footer_bottom justify-content-center">
+            <p class="col-lg-8 col-sm-12 footer-text">
+                Copyright &copy;{% now "Y" %} All rights reserved | Developed with Django Framework
+            </p>
+        </div>
+    </div>
+</footer>
+<!--================End Footer Area =================-->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'sports/js/csrf_ajax.js' %}"></script>
+<!-- SweetAlert Js -->
+<script src="{% static 'blog/vendors/sweetalert2/sweetalert2.all.min.js' %}"></script>
+
+<script src="{% static 'blog/js/popper.js' %}"></script>
+<script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'blog/js/stellar.js' %}"></script>
+<script src="{% static 'blog/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'blog/vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'blog/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'blog/vendors/isotope/isotope-min.js' %}"></script>
+<script src="{% static 'blog/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'blog/js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'blog/js/mail-script.js' %}"></script>
+<!--gmaps Js-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+<script src="{% static 'blog/js/gmaps.min.js' %}"></script>
+<script src="{% static 'blog/js/theme.js' %}"></script>
+<script src="{% static 'sports/js/utils.js'%}"></script>
+<script src="{% static 'sports/js/main.js'%}"></script>
+{% block script %}{% endblock %}
+</body>
+</html>

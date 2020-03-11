@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'moderator',
     'sociallife',
     'food',
+    'sports',
     'developershub',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -142,6 +143,9 @@ CUSTOM_IMAGES_DEVELOPERS_HUB = os.path.join(BASE_DIR, 'moderator/static/moderato
 
 AUTH_USER_MODEL = 'home.User'
 DEVELOPERS_HUB_MODEL = 'developershub.DevelopersHubBlog'
+SOCIAL_LIFE_MODEL = 'developershub.DevelopersHubBlog'
+FOOD_MODEL = 'developershub.DevelopersHubBlog'
+SPORT_MODEL = 'sports.SportBlog'
 
 LOGIN_URL = '/moderator/auth'
 
