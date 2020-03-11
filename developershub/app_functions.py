@@ -11,6 +11,9 @@ class DevelopersHubBlogClass:
     def get_model_content(self, order_by="date_created"):
         return self.blog_model.objects.all().order_by(order_by)
 
+    def filter_model_content(self, title="", order_by="date_created"):
+        return self.blog_model.objects.filter(title__icontains=title).order_by(order_by)
+
     def get_single_model_content(self, model_id):
         try:
             return self.blog_model.objects.get(pk=model_id) if model_id else None
@@ -79,7 +82,48 @@ class DevelopersHubBlogClass:
         if blog_id:
             main_blog = self.get_single_blog_content(blog_id=blog_id)
             if main_blog:
-                selected_comments = DevelopersHubBlogComment.objects.filter(blog_id=main_blog)
+                selected_comments = DevelopersHubBlogComment.objects.filter(blog=main_blog).order_by('id')[::-1]
                 no_of_comments = len(selected_comments)
                 return [selected_comments, no_of_comments]
         return ['', 0]
+
+    def get_comment_greater_than_id(self, blog_id, tmp_id):
+        if blog_id:
+            last_comment_id = int(tmp_id)
+            main_blog = self.get_single_blog_content(blog_id=blog_id)
+            if main_blog:
+                selected_comments = DevelopersHubBlogComment.objects.filter(blog=main_blog, id__gt=last_comment_id)
+                return selected_comments
+        return ''
+
+    def get_total_no_of_comment(self, blog_id):
+        if blog_id:
+            main_blog = self.get_single_blog_content(blog_id=blog_id)
+            if main_blog:
+                return DevelopersHubBlogComment.objects.filter(blog=main_blog).count()
+        return 0
+
+    def filter_blog_content_by_search(self, query, page, per_page_number, context="title"):
+        """
+        Display blog contents based on search parameter
+        :param context: search based on context parameter i.e tags
+        :param query: search query
+        :param page: page number to display
+        :param per_page_number: number of pages per page
+        :return:
+        """
+        if context == 'title':
+            developerHubBlogs = self.filter_model_content(title=query)
+        else:
+            developerHubBlogs = self.filter_model_content()
+
+        paginator = Paginator(developerHubBlogs, per_page_number)
+        blogs = ''
+        try:
+            blogs = paginator.get_page(page)
+        except PageNotAnInteger:
+            blogs = paginator.get_page(1)
+        except EmptyPage:
+            blogs = ''
+        finally:
+            return blogs

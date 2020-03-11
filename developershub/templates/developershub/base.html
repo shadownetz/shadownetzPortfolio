@@ -23,6 +23,8 @@
 
     <!-- main css -->
     <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
+    {% block link %}{% endblock %}
 
     <!--Custom CSS-->
     {% block style %}{% endblock %}
