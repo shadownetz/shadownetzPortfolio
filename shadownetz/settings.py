@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'sociallife',
     'food',
     'sports',
+    'movies',
     'developershub',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -146,6 +147,7 @@ DEVELOPERS_HUB_MODEL = 'developershub.DevelopersHubBlog'
 SOCIAL_LIFE_MODEL = 'developershub.DevelopersHubBlog'
 FOOD_MODEL = 'developershub.DevelopersHubBlog'
 SPORT_MODEL = 'sports.SportBlog'
+MOVIE_MODEL = 'movies.MovieBlog'
 
 LOGIN_URL = '/moderator/auth'
 

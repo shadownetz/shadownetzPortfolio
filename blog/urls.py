@@ -8,5 +8,6 @@ urlpatterns = [
     path('developershub/', include('developershub.urls')),
     path('social-life/', include('sociallife.urls')),
     path('food/', include('food.urls')),
-    path('sports/', include('sports.urls'))
+    path('sports/', include('sports.urls')),
+    path('movies/', include('movies.urls')),
 ]

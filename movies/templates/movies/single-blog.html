@@ -1,0 +1,297 @@
+{% extends 'movies/base.html' %}
+{% load static %}
+{% block title %} {{ blog.title }}{% endblock %}
+{% block activeDevNav %}active{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'movies/css/newstyle.css' %}">
+{% endblock %}
+{% block style %}
+    <style>
+        .banner_overlay{
+            position: absolute;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+            background-color: rgba(0,0,0,.5);
+        }
+        .other-blog-nav, .comment-img{
+            width:60px;
+            height:60px;
+            background: no-repeat center center;
+            background-size: cover
+        }
+        .single-post-area .navigation-area .nav-left:hover .other-blog-nav,
+        .single-post-area .navigation-area .nav-right:hover .other-blog-nav{
+            opacity: .5;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!--================ Start Banner Area =================-->
+    <section class="banner_area" style="background: url('{% static 'movies/img/backgrounds/movies_bg.jpg'%}') fixed center no-repeat;background-size: cover">
+        <div class="banner_overlay"></div>
+        <div class="banner_inner d-flex align-items-center" style="background-image: none">
+            <div class="container">
+                {% if blog %}
+                    <div class="banner_content text-center">
+                        <h2>{{ blog.title|upper }}</h2>
+                        <div class="page_link">
+                            <a href="{% url 'shadownetz_blog:index' %}">Blog</a>
+                            <a href="{% url 'shadownetz_blog:shadownetz_movieblog:index' %}">Movies</a>
+                            <a href="{% url 'shadownetz_blog:shadownetz_movieblog:display_blog' %}?post-id={{ blog.id }}">{{ blog.title|title }}</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="banner_content text-center">
+                        <h2>Movies</h2>
+                        <div class="page_link">
+                            <a href="{% url 'shadownetz_blog:index' %}">Blog</a>
+                            <a href="{% url 'shadownetz_blog:shadownetz_movieblog:index' %}">Movies</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!--================ End Banner Area =================-->
+
+    {% if not blog %}
+        <section class="blog_area section_gap_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>Nothing Here!.</h2>
+                        <p>please check other post for amazing contents <i class="fa fa-heart-o" aria-hidden="true"></i>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <!--================Blog Area =================-->
+        <section class="blog_area single-post-area section_gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 posts-list">
+                        <div class="single-post row">
+                            <div class="col-lg-12">
+                                <div class="feature-img">
+                                    <img class="img-fluid" src="{{ blog.display_image }}" alt="" style="width:750px;height:350px">
+                                </div>
+                            </div>
+                            <div class="col-lg-3  col-md-3">
+                                <div class="blog_info text-right">
+                                    <div class="post_tag">
+                                        <a href="#">{{ blog.tags }}</a>
+                                    </div>
+                                    <ul class="blog_meta list">
+                                        <li><a href="#"><span style="display:inline-block;width:100px;word-wrap: break-word">{{ blog.user }}</span><i class="lnr lnr-user"></i></a></li>
+                                        <li><a href="#">{{ blog.date_created|date }}<i class="lnr lnr-calendar-full"></i></a></li>
+                                        <li><a href="#">{{ blog.views }}Views<i class="lnr lnr-eye"></i></a></li>
+                                        <li><a href="#"><span class="js-toggle-no-comment">{{ number_of_comments }}</span> Comments<i class="lnr lnr-bubble"></i></a></li>
+                                    </ul>
+                                    {#                                <ul class="social-links">#}
+                                    {#                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+                                    {#                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+                                    {#                                    <li><a href="#"><i class="fa fa-github"></i></a></li>#}
+                                    {#                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
+                                    {#                                </ul>#}
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-9 blog_details">
+                                <h2>{{ blog.title|title }}</h2>
+                                <p class="excert">
+                                    {% autoescape off %}
+                                        {{ blog.content }}
+                                    {% endautoescape %}
+                                </p>
+                            </div>
+                            <div class="col-lg-12">
+                                {#                            <div class="quotes">#}
+                                {#                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training.#}
+                                {#                            </div>#}
+                                {#                            <div class="row">#}
+                                {#                                <div class="col-6">#}
+                                {#                                    <img class="img-fluid" src="img/blog/post-img1.jpg" alt="">#}
+                                {#                                </div>#}
+                                {#                                <div class="col-6">#}
+                                {#                                    <img class="img-fluid" src="img/blog/post-img2.jpg" alt="">#}
+                                {#                                </div>#}
+                                {#                                <div class="col-lg-12 mt-25">#}
+                                {#                                    <p>#}
+                                {#                                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower.#}
+                                {#                                    </p>#}
+                                {#                                    <p>#}
+                                {#                                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower.#}
+                                {#                                    </p>#}
+                                {#                                </div>#}
+                                {#                            </div>#}
+                            </div>
+                        </div>
+                        <div class="navigation-area">
+                            <div class="row">
+                                {% if previous_blog %}
+                                    <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                        <div class="thumb">
+                                            <a href="{% url 'shadownetz_blog:shadownetz_movieblog:display_blog' %}?post-id={{ previous_blog.id }}">
+                                                <div class="other-blog-nav" style="background-image: url('{{ previous_blog.display_image }}')"></div>
+                                                {#                                                <img class="img-fluid" src="{% static 'blog/img/blog/prev.jpg' %}" alt="">#}
+                                            </a>
+                                        </div>
+                                        <div class="arrow">
+                                            <a href="{% url 'shadownetz_blog:shadownetz_movieblog:display_blog' %}?post-id={{ previous_blog.id }}"><span class="lnr text-white lnr-arrow-left"></span></a>
+                                        </div>
+                                        <div class="detials">
+                                            <p>Prev Post</p>
+                                            <a href="{% url 'shadownetz_blog:shadownetz_movieblog:display_blog' %}?post-id={{ previous_blog.id }}"><h4>{{ previous_blog.title|title }}</h4></a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if next_blog %}
+                                    <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                        <div class="detials">
+                                            <p>Next Post</p>
+                                            <a href="{% url 'shadownetz_blog:shadownetz_movieblog:display_blog' %}?post-id={{ next_blog.id }}"><h4>{{ next_blog.title|title }}</h4></a>
+                                        </div>
+                                        <div class="arrow">
+                                            <a href="{% url 'shadownetz_blog:shadownetz_movieblog:display_blog' %}?post-id={{ next_blog.id }}"><span class="lnr text-white lnr-arrow-right"></span></a>
+                                        </div>
+                                        <div class="thumb">
+                                            <a href="{% url 'shadownetz_blog:shadownetz_movieblog:display_blog' %}?post-id={{ next_blog.id }}">
+                                                <div class="other-blog-nav" style="background-image: url('{{ next_blog.display_image }}')"></div>
+                                                {#                                                <img class="img-fluid" src="{% static 'blog/img/blog/next.jpg' %}" alt="">#}
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comments-area">
+                            <h4><span class="js-toggle-no-comment">{{ number_of_comments }}</span>  Comment{{ number_of_comments|pluralize }}</h4>
+                            <div class="col-12 new-comment-noti-block justify-content-center">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-3 new-comment-noti">
+                                        <a href="#" id="js-new-noti-link-click">
+                                            <div class="main-comment-noti text-center">
+                                                <b>new comment&nbsp;<i class="fa fa-arrow-circle-o-up"></i> </b>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="overflow-y: auto; max-height: 300px" id="js-comment-dialog">
+                                {% if comments %}
+                                    {% for item in comments %}
+                                        <div class="comment-list" last-index="{{ item.id }}">
+                                            <div class="single-comment justify-content-between d-flex">
+                                                <div class="user justify-content-between d-flex">
+                                                    <div class="thumb">
+                                                        <div style="background-image: url('{% static 'blog/img/blog/comment/c3.png' %}')" class="comment-img"></div>
+                                                        {#                                                        <img src="{% static 'blog/img/blog/c1.jpg' %}" alt="">#}
+                                                    </div>
+                                                    <div class="desc">
+                                                        <h5><a href="#">{{ item.user }}</a></h5>
+                                                        <p class="date">{{ item.date_created|date }} at {{ item.date_created|time }}</p>
+                                                        <p class="comment">
+                                                            {{ item.message }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                {#                                            <div class="reply-btn">#}
+                                                {#                                                <a href="" class="btn-reply text-uppercase">reply</a>#}
+                                                {#                                            </div>#}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="comment-list" last-index="0"></div>
+                                {% endif %}
+                            </div>
+                            <input type="hidden" id="js-fetch-new-comment-url" value="{% url 'shadownetz_blog:shadownetz_movieblog:fetch_new_comments' %}">
+                            <input type="hidden" id="js-no-fetched-comment" value="{{ number_of_comments }}">
+                            <input type="hidden" id="js-comment-img" value="{% static 'blog/img/blog/comment/c3.png' %}">
+                        </div>
+                        <!-- Send a Reply-->
+                        <div class="comment-form">
+                            <h4>Leave a Reply</h4>
+                            <form role="form">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="js_post_email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control mb-10" id="js_post_message" rows="5" name="message" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"></textarea>
+                                </div>
+                                <input type="hidden" id="js_post_id" value="{{ blog.id }}">
+                                <input type="hidden" id="js_post_comment_url" value="{% url 'shadownetz_blog:shadownetz_movieblog:post_comment' %}">
+                                <a href="#" id="js_post_comment" class="primary-btn primary_btn"><span>Post Comment</span></a>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget search_widget">
+                                <form role="form" method="get" action="{% url 'shadownetz_blog:shadownetz_movieblog:index' %}">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search Posts" name="q">
+                                        <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="lnr lnr-magnifier"></i></button>
+                                    </span>
+                                    </div><!-- /input-group -->
+                                </form>
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single_sidebar_widget author_widget">
+                                <img class="author_img rounded-circle img-fluid" src="{% static 'blog/img/blog/author.png' %}" alt="">
+                                <h4>Okwuzu Jude</h4>
+                                <p>Web Developer</p>
+                                <div class="social_icon">
+                                    <a href="https://www.facebook.com/shadownetz" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://twitter.com/okwuzuchiagozie" target="_blank"><i class="fa fa-twitter"></i></a>
+                                    <a href="https://github.com/shadownetz" target="_blank"><i class="fa fa-github"></i></a>
+                                    <a href="https://www.instagram.com/shadownetz/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                </div>
+                                <p>
+                                    I am a passionate web developer that specializes in the development of
+                                    web sites of any sorts. Life as a developer have not been easy but on
+                                    the long run we always love our job. Cheers!
+                                </p>
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single_sidebar_widget">
+                                <a href="#"><img class="img-fluid" src="{% static 'blog/img/blog/add.jpg' %}" alt=""></a>
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single-sidebar-widget newsletter_widget">
+                                <h4 class="widget_title">Newsletter</h4>
+                                <p>
+                                    Here, I focus on a range of items and features that we use in life without
+                                    giving them a second thought.
+                                </p>
+                                <div class="form-group d-flex flex-row">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                                        </div>
+                                        <input type="email" class="form-control js_id_email" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
+                                        <input type="hidden" value="{% url 'shadownetz:newslettersignup' %}" id="nwsletterlnk">
+                                    </div>
+                                    <a href="#" class="bbtns" id="js-newsletterbtn">Subscribe</a>
+                                </div>
+                                <p class="text-bottom">You can unsubscribe at any time</p>
+                                <div class="br"></div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================Blog Area =================-->
+    {% endif %}
+
+{% endblock %}
+{% block script %}
+    <script src="{% static 'movies/js/comments.js' %}"></script>
+{% endblock %}
