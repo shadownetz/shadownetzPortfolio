@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'blog',
     'moderator',
     'sociallife',
+    'food',
     'developershub',
     'django.contrib.admin',
     'django.contrib.auth',
