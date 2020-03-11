@@ -17,6 +17,6 @@ class FoodBlog(models.Model):
 
 class FoodBlogComment(models.Model):
     user = models.EmailField(blank=False)
-    blog = models.ForeignKey(settings.DEVELOPERS_HUB_MODEL, on_delete=models.CASCADE)
+    blog = models.ForeignKey(settings.FOOD_MODEL, on_delete=models.CASCADE)
     message = models.TextField(blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
