@@ -52,9 +52,9 @@
                     <div class="col-lg-4">
                         <div class="categories_post">
                             <img src="{% static 'blog/img/blog/cat-post/cat-post-3.jpg' %}" alt="post">
-                            <div class="categories_details">
+                            <div class="categories_details js-blog-category" link="{% url 'shadownetz_blog:shadownetz_social_life:index' %}">
                                 <div class="categories_text">
-                                    <a href="#"><h5>Social Life</h5></a>
+                                    <a href="{% url 'shadownetz_blog:shadownetz_social_life:index' %}"><h5>Social Life</h5></a>
                                     <div class="border_line"></div>
                                     <p>Enjoy your social life together</p>
                                 </div>
