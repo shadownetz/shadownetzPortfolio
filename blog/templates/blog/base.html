@@ -24,7 +24,7 @@
     <!-- main css -->
     <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
-
+    {% block style %}{% endblock %}
     <!--Google Adsense-->
     <script data-ad-client="ca-pub-5039973038158909" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
@@ -96,6 +96,7 @@
                         <a href="https://web.facebook.com/shadownetz" target="_blank"><i class="fa fa-facebook"></i></a>
                         <a href="https://twitter.com/okwuzuchiagozie" target="_blank"><i class="fa fa-twitter"></i></a>
                         <a href="https://www.instagram.com/shadownetz/" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="https://github.com/shadownetz" target="_blank"><i class="fa fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -130,7 +131,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="{% static 'blog/js/gmaps.min.js' %}"></script>
 <script src="{% static 'blog/js/theme.js' %}"></script>
-<script src="{% static 'blog/js/custom.js'%}"></script>
+<script src="{% static 'blog/custom/js/utils.js'%}"></script>
+<script src="{% static 'blog/custom/js/main.js'%}"></script>
 {% block script %}{% endblock %}
 </body>
 </html>
