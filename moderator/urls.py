@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .custom_views import category_developershub_views, category_socialife_views
+from .custom_views import (category_developershub_views, category_socialife_views, category_food_views)
 
 app_name = "shadownetz_moderator"
 
@@ -20,6 +20,10 @@ urlpatterns = [
     path('categories/social-life/new', category_socialife_views.new_social_life_content, name="category_sociallife_add"),
     path('categories/social-life/new/process', category_socialife_views.process_social_life_content,
          name="process_category_sociallife_add"),
-
+    # Food Category
+    path('categories/food', category_food_views.view_food_category, name="category_food"),
+    path('categories/food/new', category_food_views.new_food_content, name="category_food_add"),
+    path('categories/food/new/process', category_food_views.process_food_content,
+         name="process_category_food_add"),
 
 ]
