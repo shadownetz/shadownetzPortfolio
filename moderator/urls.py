@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from .custom_views import (category_developershub_views, category_socialife_views,
                            category_food_views, category_sport_views,
-                           category_movies_views)
+                           category_movies_views, category_trending_views)
 
 app_name = "shadownetz_moderator"
 
@@ -37,6 +37,11 @@ urlpatterns = [
     path('categories/movies/new', category_movies_views.new_movies_content, name="category_movies_add"),
     path('categories/movies/new/process', category_movies_views.process_new_movies_content,
          name="process_category_movies_add"),
+    # Trending Category
+    path('categories/trending', category_trending_views.view_trending_category, name="category_trending"),
+    path('categories/trending/new', category_trending_views.new_trending_content, name="category_trending_add"),
+    path('categories/trending/new/process', category_trending_views.process_trending_content,
+         name="process_category_trending_add"),
 
 
 ]

@@ -1,6 +1,6 @@
 {% extends 'moderator/base.html' %}
 {% load static %}
-{% block title %}| Developers HUB{% endblock %}
+{% block title %}| Trending{% endblock %}
 {% block link %}
     <link rel="stylesheet" href="{% static 'moderator/resources/vendors/trumbowyg/ui/trumbowyg.min.css' %}">
     <link rel="stylesheet" href="{% static 'moderator/resources/vendors/sweetalert2/sweetalert2.min.css' %}">
@@ -10,7 +10,7 @@
         <header class="content__title">
             <h1>Add New Content
                 <small>
-                    Add new content to Developers Hub Blog
+                    Add new content to Trending Blog
                 </small>
             </h1>
 
@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Content form</h4>
                         <h6></h6>
-                        <form role="form" method="post" id="addContentForm" enctype="multipart/form-data" action="{% url 'shadownetz_moderator:process_category_developershub_add' %}">
+                        <form role="form" method="post" id="addContentForm" enctype="multipart/form-data" action="{% url 'shadownetz_moderator:process_category_trending_add' %}">
                             {% csrf_token %}
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">Title</label>
