@@ -70,6 +70,8 @@ class MovieBlogClass:
                     user=email, blog=main_blog, message=message
                 )
                 if tmp_object:
+                    main_blog.comments += 1
+                    main_blog.save()
                     return True
         return False
 
