@@ -10,4 +10,5 @@ urlpatterns = [
     path('food/', include('food.urls')),
     path('sports/', include('sports.urls')),
     path('movies/', include('movies.urls')),
+    path('trending/', include('trending.urls')),
 ]

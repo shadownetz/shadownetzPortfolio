@@ -1,0 +1,223 @@
+{% extends 'trending/base.html' %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block activeDevNav %}active{% endblock %}
+{% block style %}
+    <style>
+        .banner_overlay{
+            position: absolute;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+            background-color: rgba(0,0,0,.5);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!--================ Start Banner Area =================-->
+    <section class="banner_area" style="background: url('{% static 'trending/img/backgrounds/trending_bg.jpg'%}') fixed center no-repeat;background-size: cover">
+        <div class="banner_overlay"></div>
+        <div class="banner_inner d-flex align-items-center" style="background-image: none">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Trending</h2>
+                    <div class="page_link">
+                        <a href="{% url 'shadownetz_blog:index' %}">Blog</a>
+                        <a href="{% url 'shadownetz_blog:shadownetz_trendingblog:index' %}">Trending</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Banner Area =================-->
+
+    {% if not ready %}
+        <section class="blog_area section_gap_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>Content is still in creation.</h2>
+                        <p>please check back later for amazing contents <i class="fa fa-heart-o" aria-hidden="true"></i>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
+
+        <!--================Blog Area =================-->
+        <section class="blog_area section_gap_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="blog_left_sidebar">
+                            {% if blogs %}
+                                {% for blog in blogs %}
+                                    <article class="row blog_item">
+                                        <div class="col-md-3">
+                                            <div class="blog_info text-right">
+                                                <div class="post_tag">
+                                                    <a href="#">{{ blog.tags }}</a>
+                                                    {#                                                    <a href="#">Food,</a>#}
+                                                    {#                                                    <a class="active" href="#">Technology,</a>#}
+                                                    {#                                                    <a href="#">Politics,</a>#}
+                                                    {#                                                    <a href="#">Lifestyle</a>#}
+                                                </div>
+                                                <ul class="blog_meta list">
+                                                    <li><a href="#"><span style="display:inline-block;width:100px;word-wrap: break-word">{{ blog.user }}</span><i class="lnr lnr-user"></i></a></li>
+                                                    <li><a href="#">{{ blog.date_created|date }}<i class="lnr lnr-calendar-full"></i></a></li>
+                                                    <li><a href="#">{{ blog.views }} Views<i class="lnr lnr-eye"></i></a></li>
+                                                    <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="blog_post">
+                                                <img src="{{ blog.display_image }}" alt="" style="width:555px;height:280px">
+                                                <div class="blog_details">
+                                                    <a href="{% url 'shadownetz_blog:shadownetz_trendingblog:display_blog' %}?post-id={{ blog.id }}"><h2>{{ blog.title }}</h2></a>
+                                                    <p>
+                                                        {% autoescape off %}
+                                                            {{ blog.content|truncatewords:20 }}
+                                                        {% endautoescape %}
+                                                    </p>
+
+                                                    <a href="{% url 'shadownetz_blog:shadownetz_trendingblog:display_blog' %}?post-id={{ blog.id }}" class="primary_btn"><span>View More</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                {% endfor %}
+                            {% else %}
+                                <section class="blog_area section_gap_top">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <h2>Nothing Here.</h2>
+                                                <p>please check back other pages more for amazing contents <i class="fa fa-heart-o" aria-hidden="true"></i>.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+
+                            <nav class="blog-pagination justify-content-center d-flex">
+                                {% if blogs.has_other_pages %}
+                                    <ul class="pagination">
+                                        {% if blogs.has_previous %}
+                                            <li class="page-item">
+                                                {% if request.GET.q %}
+                                                    <a href="{% url 'shadownetz_blog:shadownetz_trendingblog:index' %}?q={{ request.GET.q }}&page={{ blogs.previous_page_number }}" class="page-link" aria-label="Previous">
+                                                {% else %}
+                                                    <a href="{% url 'shadownetz_blog:shadownetz_trendingblog:index' %}?page={{ blogs.previous_page_number }}" class="page-link" aria-label="Previous">
+                                                {% endif %}
+                                                <span aria-hidden="true">
+                                            <span class="lnr lnr-chevron-left"></span>
+                                        </span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                        {% for i in blogs.paginator.page_range %}
+                                            {% if request.GET.q %}
+                                                <li class="page-item">
+                                                    <a href="{% url 'shadownetz_blog:shadownetz_trendingblog:index' %}?q={{ request.GET.q }}&page={{ i }}" class="page-link">{{ i }}</a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item">
+                                                    <a href="{% url 'shadownetz_blog:shadownetz_trendingblog:index' %}?page={{ i }}" class="page-link">{{ i }}</a>
+                                                </li>
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                        {#                                        <li class="page-item"><a href="#" class="page-link">01</a></li>#}
+                                        {#                                        <li class="page-item active"><a href="#" class="page-link">02</a></li>#}
+                                        {#                                        <li class="page-item"><a href="#" class="page-link">03</a></li>#}
+                                        {#                                        <li class="page-item"><a href="#" class="page-link">04</a></li>#}
+                                        {#                                        <li class="page-item"><a href="#" class="page-link">09</a></li>#}
+                                        {% if blogs.has_next %}
+                                            <li class="page-item">
+                                                {% if request.GET.q %}
+                                                    <a href="{% url 'shadownetz_blog:shadownetz_trendingblog:index' %}?q={{ request.GET.q }}&page={{ blogs.next_page_number}}" class="page-link" aria-label="Next">
+                                                {% else %}
+                                                    <a href="{% url 'shadownetz_blog:shadownetz_trendingblog:index' %}?page={{ blogs.next_page_number}}" class="page-link" aria-label="Next">
+                                                {% endif %}
+
+                                                <span aria-hidden="true">
+                                                        <span class="lnr lnr-chevron-right"></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+
+                                {% endif %}
+
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget search_widget">
+                                <form role="form" method="get" action="{% url 'shadownetz_blog:shadownetz_trendingblog:index' %}">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search Posts" name="q">
+                                        <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="lnr lnr-magnifier"></i></button>
+                                    </span>
+                                    </div><!-- /input-group -->
+                                </form>
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single_sidebar_widget author_widget">
+                                <img class="author_img rounded-circle img-fluid" src="{% static 'blog/img/blog/author.png' %}" alt="">
+                                <h4>Okwuzu Jude</h4>
+                                <p>Web Developer</p>
+                                <div class="social_icon">
+                                    <a href="https://www.facebook.com/shadownetz" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://twitter.com/okwuzuchiagozie" target="_blank"><i class="fa fa-twitter"></i></a>
+                                    <a href="https://github.com/shadownetz" target="_blank"><i class="fa fa-github"></i></a>
+                                    <a href="https://www.instagram.com/shadownetz/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                </div>
+                                <p>
+                                    I am a passionate web developer that specializes in the development of
+                                    web sites of any sorts. Life as a developer have not been easy but on
+                                    the long run we always love our job. Cheers!
+                                </p>
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single_sidebar_widget">
+                                <a href="#"><img class="img-fluid" src="{% static 'blog/img/blog/add.jpg' %}" alt=""></a>
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single-sidebar-widget newsletter_widget">
+                                <h4 class="widget_title">Newsletter</h4>
+                                <p>
+                                    Here, I focus on a range of items and features that we use in life without
+                                    giving them a second thought.
+                                </p>
+                                <div class="form-group d-flex flex-row">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                                        </div>
+                                        <input type="email" class="form-control js_id_email" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
+                                        <input type="hidden" value="{% url 'shadownetz:newslettersignup' %}" id="nwsletterlnk">
+                                    </div>
+                                    <a href="#" class="bbtns" id="js-newsletterbtn">Subscribe</a>
+                                </div>
+                                <p class="text-bottom">You can unsubscribe at any time</p>
+                                <div class="br"></div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================Blog Area =================-->
+    {% endif %}
+
+
+{% endblock %}
