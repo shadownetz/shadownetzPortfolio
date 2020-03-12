@@ -11,7 +11,7 @@ class TrendingBlogAdmin(admin.ModelAdmin):
     list_filter = ('user', 'date_created')
     fieldsets = (
         (None, {'fields': (
-            'user', 'title', 'content', 'tags', 'views', 'display_image',
+            'user', 'title', 'content', 'tags', 'views', 'comments', 'display_image',
         )}),
     )
     search_fields = ('user',)

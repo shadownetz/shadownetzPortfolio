@@ -8,6 +8,7 @@ class TrendingBlog(models.Model):
     content = models.TextField(blank=False)
     tags = models.CharField(max_length=500, blank=True, null=True)
     views = models.IntegerField(default=0)
+    comments = models.IntegerField(default=0)
     display_image = models.URLField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
 

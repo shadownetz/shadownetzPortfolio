@@ -11,7 +11,7 @@ def view_social_life_category(request):
 
 def new_social_life_content(request):
     context = {
-        "custom_images": get_custom_blog_pictures('developershub')
+        "custom_images": get_custom_blog_pictures('sociallife')
     }
     new_content_form = socialifeforms.NewContentForm()
     context["new_content_form"] = new_content_form
