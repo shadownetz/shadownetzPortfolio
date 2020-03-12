@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
-from .custom_views import (category_developershub_views, category_socialife_views, category_food_views, category_sport_views)
+from .custom_views import (category_developershub_views, category_socialife_views,
+                           category_food_views, category_sport_views,
+                           category_movies_views)
 
 app_name = "shadownetz_moderator"
 
@@ -31,9 +33,9 @@ urlpatterns = [
     path('categories/sport/new/process', category_sport_views.process_sport_content,
          name="process_category_sport_add"),
     # Movies Category
-    path('categories/movies', category_sport_views.view_sport_category, name="category_movies"),
-    path('categories/movies/new', category_sport_views.new_sport_content, name="category_movies_add"),
-    path('categories/movies/new/process', category_sport_views.process_sport_content,
+    path('categories/movies', category_movies_views.view_movies_category, name="category_movies"),
+    path('categories/movies/new', category_movies_views.new_movies_content, name="category_movies_add"),
+    path('categories/movies/new/process', category_movies_views.process_new_movies_content,
          name="process_category_movies_add"),
 
 
