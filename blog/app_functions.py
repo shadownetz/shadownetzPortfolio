@@ -95,27 +95,51 @@ class BlogClass:
 
     @staticmethod
     def fetch_popular_post_developers_hub():
-        return DevelopersHubBlog.objects.all().order_by('date_created')[::-1][0]
+        try:
+            return DevelopersHubBlog.objects.all().order_by('date_created')[::-1][0]
+        except IndexError:
+            pass
+        return
 
     @staticmethod
     def fetch_popular_post_food():
-        return FoodBlog.objects.all().order_by('date_created')[::-1][0]
+        try:
+            return FoodBlog.objects.all().order_by('date_created')[::-1][0]
+        except IndexError:
+            pass
+        return
 
     @staticmethod
     def fetch_popular_post_movies():
-        return MovieBlog.objects.all().order_by('date_created')[::-1][0]
+        try:
+            return MovieBlog.objects.all().order_by('date_created')[::-1][0]
+        except IndexError:
+            pass
+        return
 
     @staticmethod
     def fetch_popular_post_social_life():
-        return SocialLifeBlog.objects.all().order_by('date_created')[::-1][0]
+        try:
+            return SocialLifeBlog.objects.all().order_by('date_created')[::-1][0]
+        except IndexError:
+            pass
+        return
 
     @staticmethod
     def fetch_popular_post_trending():
-        return TrendingBlog.objects.all().order_by('date_created')[::-1][0]
+        try:
+            return TrendingBlog.objects.all().order_by('date_created')[::-1][0]
+        except IndexError:
+            pass
+        return
 
     @staticmethod
     def fetch_popular_post_sport():
-        return SportBlog.objects.all().order_by('date_created')[::-1][0]
+        try:
+            return SportBlog.objects.all().order_by('date_created')[::-1][0]
+        except IndexError:
+            pass
+        return
 
     @staticmethod
     def populate_list(*args):
