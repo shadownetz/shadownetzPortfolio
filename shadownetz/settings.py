@@ -145,8 +145,8 @@ CUSTOM_IMAGES_DEVELOPERS_HUB = os.path.join(BASE_DIR, 'moderator/static/moderato
 
 AUTH_USER_MODEL = 'home.User'
 DEVELOPERS_HUB_MODEL = 'developershub.DevelopersHubBlog'
-SOCIAL_LIFE_MODEL = 'developershub.DevelopersHubBlog'
-FOOD_MODEL = 'developershub.DevelopersHubBlog'
+SOCIAL_LIFE_MODEL = 'sociallife.SocialLifeBlog'
+FOOD_MODEL = 'food.FoodBlog'
 SPORT_MODEL = 'sports.SportBlog'
 MOVIE_MODEL = 'movies.MovieBlog'
 TRENDING_MODEL = 'trending.TrendingBlog'
