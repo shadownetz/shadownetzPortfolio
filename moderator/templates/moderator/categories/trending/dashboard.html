@@ -1,0 +1,85 @@
+{% extends 'moderator/base.html' %}
+{% load static %}
+{% block title %}| Developers HUB{% endblock %}
+{% block content %}
+    <section class="content">
+        <header class="content__title">
+            <h1>Dashboard
+                <small>
+                    Manage Developers Hub Blog Content!
+                </small>
+            </h1>
+
+            {#            <div class="actions">#}
+            {#                <a href="#" class="actions__item zwicon-cog"></a>#}
+            {#                <a href="#" class="actions__item zwicon-refresh-double"></a>#}
+            {##}
+            {#                <div class="dropdown actions__item">#}
+            {#                    <i data-toggle="dropdown" class="zwicon-more-h"></i>#}
+            {#                    <div class="dropdown-menu dropdown-menu-right">#}
+            {#                        <a href="#" class="dropdown-item">Refresh</a>#}
+            {#                        <a href="#" class="dropdown-item">Manage Widgets</a>#}
+            {#                        <a href="#" class="dropdown-item">Settings</a>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+        </header>
+
+        <div class="row quick-stats">
+            <div class="col-sm-6 col-md-3">
+                <a href="{% url 'shadownetz_moderator:category_developershub_add' %}">
+                    <div class="quick-stats__item">
+                        <div class="quick-stats__info">
+                            <h2><i class="zwicon-add-item" style="font-size:32px"></i></h2>
+                            <small>Add</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <div class="quick-stats__item">
+                    <div class="quick-stats__info">
+                        <h2>356,785K</h2>
+                        <small>Total Website Clicks</small>
+                    </div>
+
+                    <div class="quick-stats__chart peity-bar">4,7,6,2,5,3,8,6,6,4,8</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <div class="quick-stats__item">
+                    <div class="quick-stats__info">
+                        <h2>$58,778</h2>
+                        <small>Total Sales Orders</small>
+                    </div>
+
+                    <div class="quick-stats__chart peity-bar">9,4,6,5,6,4,5,7,9,3,6</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <div class="quick-stats__item">
+                    <div class="quick-stats__info">
+                        <h2>214</h2>
+                        <small>Total Support Tickets</small>
+                    </div>
+
+                    <div class="quick-stats__chart peity-bar">5,6,3,9,7,5,4,6,5,6,4</div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer d-none d-sm-block">
+            <p>© shadownetZ. All rights reserved.</p>
+
+            <ul class="footer__nav">
+                <a href="{% url 'shadownetz:index' %}" target="_blank">Homepage</a>
+                <a href="{% url 'shadownetz_blog:index' %}" target="_blank">Blogs</a>
+                <a href="{% url 'shadownetz:contact' %}" target="_blank">Contacts</a>
+            </ul>
+        </footer>
+    </section>
+{% endblock %}

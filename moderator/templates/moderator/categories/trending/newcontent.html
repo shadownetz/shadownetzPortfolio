@@ -1,0 +1,124 @@
+{% extends 'moderator/base.html' %}
+{% load static %}
+{% block title %}| Developers HUB{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'moderator/resources/vendors/trumbowyg/ui/trumbowyg.min.css' %}">
+    <link rel="stylesheet" href="{% static 'moderator/resources/vendors/sweetalert2/sweetalert2.min.css' %}">
+{% endblock %}
+{% block content %}
+    <section class="content">
+        <header class="content__title">
+            <h1>Add New Content
+                <small>
+                    Add new content to Developers Hub Blog
+                </small>
+            </h1>
+
+            {#            <div class="actions">#}
+            {#                <a href="#" class="actions__item zwicon-cog"></a>#}
+            {#                <a href="#" class="actions__item zwicon-refresh-double"></a>#}
+            {##}
+            {#                <div class="dropdown actions__item">#}
+            {#                    <i data-toggle="dropdown" class="zwicon-more-h"></i>#}
+            {#                    <div class="dropdown-menu dropdown-menu-right">#}
+            {#                        <a href="#" class="dropdown-item">Refresh</a>#}
+            {#                        <a href="#" class="dropdown-item">Manage Widgets</a>#}
+            {#                        <a href="#" class="dropdown-item">Settings</a>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+        </header>
+
+        <div class="row quick-stats">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Content form</h4>
+                        <h6></h6>
+                        <form role="form" method="post" id="addContentForm" enctype="multipart/form-data" action="{% url 'shadownetz_moderator:process_category_developershub_add' %}">
+                            {% csrf_token %}
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">Title</label>
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        {{ new_content_form.title }}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">Content</label>
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        {{ new_content_form.content }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2">Tags</label>
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        {{ new_content_form.tags }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label class="col-sm-2">Display Image</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <a href="#" data-toggle="modal" data-target="#stockImageModal">
+                                                    <i class="zwicon-archive"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        {{ new_content_form.display_image }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="button" id="addContentTrigger" class="btn btn-theme mt-5">Upload Content&nbsp;<i class="zwicon-add-item"></i> </button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <footer class="footer d-none d-sm-block">
+            <p>© shadownetZ. All rights reserved.</p>
+
+            <ul class="footer__nav">
+                <a href="{% url 'shadownetz:index' %}" target="_blank">Homepage</a>
+                <a href="{% url 'shadownetz_blog:index' %}" target="_blank">Blogs</a>
+                <a href="{% url 'shadownetz:contact' %}" target="_blank">Contacts</a>
+            </ul>
+        </footer>
+    </section>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'moderator/resources/vendors/trumbowyg/trumbowyg.min.js' %}"></script>
+    <script src="{% static 'moderator/resources/vendors/sweetalert2/sweetalert2.all.min.js' %}"></script>
+    <script src="{% static 'moderator/custom/js/utils.js' %}"></script>
+    <script src="{% static 'moderator/custom/categories/developershub/main.js' %}"></script>
+    {% if add_content_save_status is True %}
+        <script>
+            displayAlert("top-right", "success", "Uploaded","Content Uploaded", 3000, 1000)
+        </script>
+    {% elif add_content_save_status is False%}
+        <script>
+            displayAlert("center", "error", "Error", "Content Upload failed", 2000, 1000)
+        </script>
+    {% endif %}
+{% endblock %}
