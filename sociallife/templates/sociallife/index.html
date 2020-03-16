@@ -65,7 +65,13 @@
                                                     {#                                                    <a href="#">Lifestyle</a>#}
                                                 </div>
                                                 <ul class="blog_meta list">
-                                                    <li><a href="#"><span style="display:inline-block;width:100px;word-wrap: break-word">{{ blog.user }}</span><i class="lnr lnr-user"></i></a></li>
+                                                    <li><a href="#"><span style="display:inline-block;width:100px;word-wrap: break-word">
+                                                        {% if blog.user %}
+                                                            {{ blog.user }}
+                                                        {% else %}
+                                                            {{ blog.author }}
+                                                        {% endif %}
+                                                    </span><i class="lnr lnr-user"></i></a></li>
                                                     <li><a href="#">{{ blog.date_created|date }}<i class="lnr lnr-calendar-full"></i></a></li>
                                                     <li><a href="#">{{ blog.views }} Views<i class="lnr lnr-eye"></i></a></li>
                                                     <li><a href="#">{{ blog.comments }} Comments<i class="lnr lnr-bubble"></i></a></li>
@@ -77,6 +83,9 @@
                                                 <img src="{{ blog.display_image }}" alt="" style="width:555px;height:280px">
                                                 <div class="blog_details">
                                                     <a href="{% url 'shadownetz_blog:shadownetz_social_life:display_blog' %}?post-id={{ blog.id }}"><h2>{{ blog.title }}</h2></a>
+                                                    {% if not blog.user %}
+                                                        <a href="https://newsapi.org" target="_blank"><code>Powered by News API</code></a>
+                                                    {% endif %}
                                                     <p>
                                                         {% autoescape off %}
                                                             {{ blog.content|truncatewords:20 }}
