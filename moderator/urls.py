@@ -56,6 +56,10 @@ urlpatterns = [
     path('categories/movies/new', category_movies_views.new_movies_content, name="category_movies_add"),
     path('categories/movies/new/process', category_movies_views.process_new_movies_content,
          name="process_category_movies_add"),
+    path('categories/movies/new/template', category_movies_views.new_developers_hub_content_from_template, name="category_movies_add_template"),
+    path('categories/movies/new/template/process', category_movies_views.process_new_developers_hub_content_from_template,
+         name="process_category_movies_add_template"),
+
     # Trending Category
     path('categories/trending', category_trending_views.view_trending_category, name="category_trending"),
     path('categories/trending/new', category_trending_views.new_trending_content, name="category_trending_add"),
