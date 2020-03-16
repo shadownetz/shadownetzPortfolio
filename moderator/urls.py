@@ -38,6 +38,10 @@ urlpatterns = [
     path('categories/food/new', category_food_views.new_food_content, name="category_food_add"),
     path('categories/food/new/process', category_food_views.process_food_content,
          name="process_category_food_add"),
+    path('categories/food/new/template', category_food_views.new_food_content_from_template, name="category_food_add_template"),
+    path('categories/food/new/template/process', category_food_views.process_food_content_from_template,
+         name="process_category_food_add_template"),
+
     # Sport Category
     path('categories/sport', category_sport_views.view_sport_category, name="category_sport"),
     path('categories/sport/new', category_sport_views.new_sport_content, name="category_sport_add"),

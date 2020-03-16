@@ -5,13 +5,13 @@ from .models import *
 class FoodBlogAdmin(admin.ModelAdmin):
     model = FoodBlog
     list_display = (
-        'id', 'user', 'title', 'content', 'tags', 'views', 'comments', 'display_image',
+        'id', 'user', 'author', 'title', 'content', 'tags', 'views', 'comments', 'url', 'display_image',
         'date_created'
     )
     list_filter = ('user', 'date_created')
     fieldsets = (
         (None, {'fields': (
-            'user', 'title', 'content', 'tags', 'views', 'comments', 'display_image',
+            'user', 'author', 'title', 'content', 'tags', 'views', 'comments', 'url', 'display_image',
         )}),
     )
     search_fields = ('user',)
