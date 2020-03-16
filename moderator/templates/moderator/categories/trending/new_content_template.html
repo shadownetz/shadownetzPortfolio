@@ -1,0 +1,122 @@
+{% extends 'moderator/base.html' %}
+{% load static %}
+{% block title %}| Trending{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'moderator/resources/vendors/trumbowyg/ui/trumbowyg.min.css' %}">
+    <link rel="stylesheet" href="{% static 'moderator/resources/vendors/sweetalert2/sweetalert2.min.css' %}">
+{% endblock %}
+{% block content %}
+    <section class="content">
+        <header class="content__title">
+            <h1>Add New Content
+                <small>
+                    Add new content to Trending Blog
+                </small>
+            </h1>
+
+            {#            <div class="actions">#}
+            {#                <a href="#" class="actions__item zwicon-cog"></a>#}
+            {#                <a href="#" class="actions__item zwicon-refresh-double"></a>#}
+            {##}
+            {#                <div class="dropdown actions__item">#}
+            {#                    <i data-toggle="dropdown" class="zwicon-more-h"></i>#}
+            {#                    <div class="dropdown-menu dropdown-menu-right">#}
+            {#                        <a href="#" class="dropdown-item">Refresh</a>#}
+            {#                        <a href="#" class="dropdown-item">Manage Widgets</a>#}
+            {#                        <a href="#" class="dropdown-item">Settings</a>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+        </header>
+
+        <div class="row quick-stats">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Blog Templates</h4>
+                        <h6></h6>
+
+                        <div class="card-deck">
+
+                            <div class="row">
+                                {% if blogs %}
+                                    {% for blog in blogs %}
+                                        <div class="col-lg-4" style="margin-bottom: 20px">
+                                            <div class="card" style="margin: auto 0">
+                                                <form role="form" method="post" enctype="multipart/form-data" action="{% url 'shadownetz_moderator:process_category_trending_add_template' %}">
+                                                    {% csrf_token %}
+                                                    <img class="card-img-top" src="{{ blog.get_image }}" style="height: 150px">
+
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Title</h4>
+                                                        <h6 class="card-subtitle">{{ blog.get_title }}</h6>
+
+                                                        <div class="actions">
+                                                            <button href="#" type="submit" class="btn-outline-success actions__item zwicon-upload" style="background: rgba(0,0,0,.5)"></button>
+                                                        </div>
+
+                                                        <p class="card-text">
+                                                            {{ blog.get_content }}
+                                                        </p>
+                                                        <input type="hidden" name="post_title" value="{{ blog.get_title }}">
+                                                        <input type="hidden" name="post_content" value="{{ blog.get_content }}">
+                                                        <input type="hidden" name="post_tags" value="{{ blog.get_tags }}">
+                                                        <input type="hidden" name="post_image" value="{{ blog.get_image }}">
+                                                        <input type="hidden" name="post_date" value="{{ blog.get_date }}">
+                                                        <input type="hidden" name="post_user" value="{{ blog.get_user }}">
+                                                        <input type="hidden" name="post_url" value="{{ blog.get_url }}">
+                                                    </div>
+
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <div class="col-12 justify-content-center">
+                                        <a class="btn btn-theme-dark" id="js-prev-page" href="#">Previous Page</a>
+                                        <a class="btn btn-theme-dark" id="js-nxt-page" href="#">Next Page</a>
+                                        <input type="hidden" id="js-page-num" value="{{ request.GET.page }}">
+                                        <input type="hidden" id="js-page-link" value="{% url 'shadownetz_moderator:category_trending_add_template'%}?page=">
+                                    </div>
+                                {% else %}
+                                    <div class="col-12 text-center">
+                                        <h5>No Template Available for now <i class="zwicon-folder-minus"></i></h5>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <footer class="footer d-none d-sm-block">
+            <p>© shadownetZ. All rights reserved.</p>
+
+            <ul class="footer__nav">
+                <a href="{% url 'shadownetz:index' %}" target="_blank">Homepage</a>
+                <a href="{% url 'shadownetz_blog:index' %}" target="_blank">Blogs</a>
+                <a href="{% url 'shadownetz:contact' %}" target="_blank">Contacts</a>
+            </ul>
+        </footer>
+    </section>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'moderator/resources/vendors/trumbowyg/trumbowyg.min.js' %}"></script>
+    <script src="{% static 'moderator/resources/vendors/sweetalert2/sweetalert2.all.min.js' %}"></script>
+    <script src="{% static 'moderator/custom/js/utils.js' %}"></script>
+    <script src="{% static 'moderator/custom/categories/developershub/main.js' %}"></script>
+    {% if add_content_save_status is True %}
+        <script>
+            displayAlert("top-right", "success", "Uploaded","Content Uploaded", 3000, 1000)
+        </script>
+    {% elif add_content_save_status is False%}
+        <script>
+            displayAlert("center", "error", "Error", "Content Upload failed", 2000, 1000)
+        </script>
+    {% endif %}
+{% endblock %}

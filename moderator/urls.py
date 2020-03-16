@@ -65,6 +65,9 @@ urlpatterns = [
     path('categories/trending/new', category_trending_views.new_trending_content, name="category_trending_add"),
     path('categories/trending/new/process', category_trending_views.process_trending_content,
          name="process_category_trending_add"),
+    path('categories/trending/new/template', category_trending_views.new_developers_hub_content_from_template, name="category_trending_add_template"),
+    path('categories/trending/new/template/process', category_trending_views.process_new_developers_hub_content_from_template,
+         name="process_category_trending_add_template"),
 
 
 ]
