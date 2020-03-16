@@ -34,7 +34,7 @@ function loadPrevNextPageLink(){
     if(currPage){
         if(val <= 1){
             prevPage.attr('href', pageLink+1);
-            nxtPage.attr('href', '#')
+            nxtPage.attr('href', pageLink+(val+1))
         }else{
             prevPage.attr('href', pageLink+(val-1));
             nxtPage.attr('href', pageLink+(val+1))

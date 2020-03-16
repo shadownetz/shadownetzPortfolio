@@ -47,6 +47,10 @@ urlpatterns = [
     path('categories/sport/new', category_sport_views.new_sport_content, name="category_sport_add"),
     path('categories/sport/new/process', category_sport_views.process_sport_content,
          name="process_category_sport_add"),
+    path('categories/sport/new/template', category_sport_views.new_sport_content_from_template, name="category_sport_add_template"),
+    path('categories/sport/new/template/process', category_sport_views.process_sport_content_from_template,
+         name="process_category_sport_add_template"),
+
     # Movies Category
     path('categories/movies', category_movies_views.view_movies_category, name="category_movies"),
     path('categories/movies/new', category_movies_views.new_movies_content, name="category_movies_add"),
