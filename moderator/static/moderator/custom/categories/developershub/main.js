@@ -6,7 +6,9 @@ $(document).ready(function(){
         if(validate_status){
             addContentForm.submit();
         }
-    })
+    });
+    // load next and previous page link for blog template
+    loadPrevNextPageLink();
 });
 
 function validateAddContent(){
@@ -20,4 +22,24 @@ function validateAddContent(){
         return false
     }
     return true
+}
+
+function loadPrevNextPageLink(){
+    let prevPage = $('#js-prev-page');
+    let nxtPage = $('#js-nxt-page');
+    let currPage = $('#js-page-num').val();
+    let pageLink = $('#js-page-link').val();
+    let val = Number.parseInt(currPage);
+
+    if(currPage){
+        if(val <= 1){
+            prevPage.attr('href', pageLink+1);
+            nxtPage.attr('href', '#')
+        }else{
+            prevPage.attr('href', pageLink+(val-1));
+            nxtPage.attr('href', pageLink+(val+1))
+        }
+    }else{
+        nxtPage.attr('href', pageLink+2)
+    }
 }

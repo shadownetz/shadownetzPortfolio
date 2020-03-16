@@ -16,6 +16,10 @@ urlpatterns = [
     path('categories/developershub/new', category_developershub_views.new_developers_hub_content, name="category_developershub_add"),
     path('categories/developershub/new/process', category_developershub_views.process_new_developers_hub_content,
          name="process_category_developershub_add"),
+    path('categories/developershub/new/template/', category_developershub_views.new_developers_hub_content_from_template,
+         name="category_developershub_add_template"),
+    path('categories/developershub/new/template/process', category_developershub_views.process_new_developers_hub_content_from_template,
+         name="process_category_developershub_add_template"),
     # Social Life Category
     path('categories/social-life', category_socialife_views.view_social_life_category,
          name="category_sociallife"),

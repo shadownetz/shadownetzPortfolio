@@ -154,6 +154,8 @@ TRENDING_MODEL = 'trending.TrendingBlog'
 
 LOGIN_URL = '/moderator/auth'
 
+NEWS_API_KEY = "b75e7b5b895f452e95ec4ce9ebc8995c"
+
 
 # PREPEND_WWW = True
 
