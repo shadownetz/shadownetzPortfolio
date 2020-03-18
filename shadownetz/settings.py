@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-rbo_0zsc+b$ah%_%del814!a)qyag47dm!8^h3ye%@b*lzmy('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['shadownetz.herokuapp.com']
 
@@ -137,7 +137,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Custom images for blog content stored
 CUSTOM_IMAGES = os.path.join(BASE_DIR, 'moderator/static/moderator/custom/images/custom_images/')
@@ -166,5 +166,6 @@ NEWS_API_KEY = "b75e7b5b895f452e95ec4ce9ebc8995c"
 # SECURE_HSTS_SECONDS = 60
 # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 # SECURE_HSTS_PRELOAD = True
-
-django_heroku.settings(locals())
+DEBUG_PROPAGATE_EXCEPTIONS = True
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+# django_heroku.settings(locals())

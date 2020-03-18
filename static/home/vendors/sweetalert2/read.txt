@@ -1,0 +1,8 @@
+setTimeout(function(){
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Change Applied Successfully',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
