@@ -10,7 +10,4 @@ urlpatterns = [
     path('contact', views.ContactView.as_view(), name="contact"),
     path('newsletter/signup', views.newsletter, name='newslettersignup'),
     path('status/email-origin', views.does_email_exist, name="emailOriginStatus")
-]
-
-if not settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
