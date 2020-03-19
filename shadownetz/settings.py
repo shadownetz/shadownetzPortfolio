@@ -168,4 +168,4 @@ NEWS_API_KEY = "b75e7b5b895f452e95ec4ce9ebc8995c"
 # SECURE_HSTS_PRELOAD = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
