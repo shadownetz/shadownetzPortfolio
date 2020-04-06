@@ -3,7 +3,8 @@ from .models import (User, NewsLetterSubscription)
 from .forms import NewsletterForm, ContactForm
 from django.http import JsonResponse
 from django.views import View
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from django.conf import settings
 
 
 def index(request):
@@ -13,6 +14,12 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+def propush_js(request):
+    with open(settings.PROPUSH_URL+'/sw-07c23.js', 'r') as file:
+        file_content = file.read()
+    return HttpResponse(file_content, content_type="text/javascript")
 
 
 class ContactView(View):

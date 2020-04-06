@@ -138,6 +138,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+PROPUSH_URL = os.path.join(BASE_DIR, 'home/static/home/custom-js/')
 
 # Custom images for blog content stored
 CUSTOM_IMAGES = os.path.join(BASE_DIR, 'moderator/static/moderator/custom/images/custom_images/')
