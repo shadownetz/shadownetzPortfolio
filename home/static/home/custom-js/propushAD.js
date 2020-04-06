@@ -2,8 +2,8 @@ const s = document.createElement('script');
 s.src='//phoossax.net/pfe/current/tag.min.js?z=3171976';
 s.onload = (sdk) => {
     sdk.onPermissionDefault(() => {});
-    sdk.onPermissionAllowed(() => {window.location.replace("//abdurantom.com/afu.php?zoneid=3171978")});
-    sdk.onPermissionDenied(() => {window.location.replace("//abdurantom.com/afu.php?zoneid=3171978")});
+    sdk.onPermissionAllowed(() => {window.open("https://abdurantom.com/afu.php?zoneid=3171978", '_blank')});
+    sdk.onPermissionDenied(() => {});
     sdk.onAlreadySubscribed(() => {});
     sdk.onNotificationUnsupported(() => {});
 }
